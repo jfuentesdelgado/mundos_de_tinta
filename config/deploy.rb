@@ -39,6 +39,18 @@ set :rvm_ruby_version, 'ruby-2.2.2@mundos_de_tinta'
 
 namespace :deploy do
 
+  after :publishing, :restart
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      # execute :touch, release_path.join('tmp/restart.txt')
+      # se para para pedir contraseña
+      execute "sudo service unicorn_mundos_de_tinta restart"
+    end
+  end
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
