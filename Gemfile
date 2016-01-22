@@ -29,6 +29,16 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'launchy'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'spring-commands-rspec', '~> 1.0.2'
 end
 
 group :development do
@@ -40,5 +50,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'rubocop'
+  gem 'guard-rspec', '~> 4.6'
+  gem 'guard-rubocop'
 end
-
